@@ -11,7 +11,7 @@
         android:id="@+id/btn_main_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="显式Intent"
+        android:text="显式Intent+网页打开外部app"
         android:textAllCaps="false"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"

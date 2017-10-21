@@ -32,9 +32,12 @@
 
             <!--多了一个schema-->
             <intent-filter>
-                <action android:name="com.example.app2.intent.action.MAIN"/>
+                <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT"/>
-                <data android:scheme="app_main2" />
+
+                <!--<action android:name="com.example.app2.intent.action.MAIN"/>-->
+                <action android:name="android.intent.action.VIEW"/>
+                <data android:scheme="appmain2" />
             </intent-filter>
 
         </activity>
