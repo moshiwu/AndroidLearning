@@ -1,6 +1,7 @@
 package com.example.moqiaowen.mydemo1;
 
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -83,5 +84,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         System.out.println("on restart");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+
+        //万一不幸被资源回收了，可以在这个方法里面采取一些保存数据的措施
+        System.out.println("资源被回收，对数据进行保存");
     }
 }
