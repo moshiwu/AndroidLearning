@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentFrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.moqiaowen.mydemo7.PercentFrameLayoutActivity">
+
+    <Button
+        android:id="@+id/button21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button1"
+        app:layout_heightPercent="20%"
+        app:layout_marginLeftPercent="20%"
+        app:layout_marginTopPercent="10%"
+        app:layout_widthPercent="20%"
+        />
+
+    <Button
+        android:id="@+id/button22"
+        android:layout_width="100dp"
+        android:text="Button2"
+        app:layout_aspectRatio="78%"
+        app:layout_marginLeftPercent="20%"
+        app:layout_marginTopPercent="50%"/>
+
+    <Button
+        android:id="@+id/button23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:text="Button"
+        app:layout_marginEndPercent="30%"/>
+
+    <!--使用layout_marginBottomPercent、layout_marginRightPercent时，必须先设置layout_gravity为right、bottom-->
+    <Button
+        android:id="@+id/button24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|bottom"
+        android:text="Button"
+        app:layout_marginBottomPercent="20%"
+        app:layout_marginRightPercent="5%"/>
+
+</android.support.percent.PercentFrameLayout>
