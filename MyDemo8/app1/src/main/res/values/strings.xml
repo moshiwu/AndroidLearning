@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MyDemo8</string>
+    <string name="title_activity_simple_list_view">SimpleListViewActivity</string>
+    <string name="title_activity_custom_list_view">CustomListViewActivity</string>
+    <string name="title_activity_recycler_view">RecyclerViewActivity</string>
+    <string name="title_activity_horizontal_recycler_view">HorizontalRecyclerViewActivity</string>
+    <string name="title_activity_staggered_grid_recycler_view">StaggeredGridRecyclerViewActivity</string>
+    <string name="title_activity_grid_recycler_view">GridRecyclerViewActivity</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>
