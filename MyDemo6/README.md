@@ -1,1 +1,2 @@
-Fragment
+- 创建、添加、移除Fragment
+- 使用Fragment来适配平板和手机
