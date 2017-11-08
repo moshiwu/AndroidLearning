@@ -30,13 +30,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         System.out.println("click " + button.getText().toString());
 
 
-        //方式一：指定类名的
+        //方式一：指定类名的（显示广播）
 //        Intent intent = new Intent(this, MyReceiver1.class);
 
 //        Intent intent = new Intent();
 //        intent.setClassName("com.example.moqiaowen.mydemo5", "com.example.moqiaowen.mydemo5.MyReceiver1");
 
-        //方式二：指定intent-filter（在android 8.0无效）
+        //方式二：指定intent-filter（隐式广播，在android 8.0无效）
+        //http://blog.csdn.net/chenshengfa/article/details/71407704
         Intent intent = new Intent();
         intent.setAction(MyReceiver1.ACTION);
 
