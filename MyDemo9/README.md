@@ -1,0 +1,4 @@
+- 文件存储
+- SharedPreferences存储
+- SQLite3 : SQLiteOpenHelper
+- SQLite3 : LitePal
