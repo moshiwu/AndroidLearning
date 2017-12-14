@@ -1,0 +1,4 @@
+- 部分权限的请求
+- 打电话
+- 读取通讯录（读取系统提供的DataProvider）
+- DataProvider
