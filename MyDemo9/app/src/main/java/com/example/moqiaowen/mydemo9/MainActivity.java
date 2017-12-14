@@ -40,12 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
 
-        // LitePal 初始化和创建数据库
-        LitePal.initialize(this);
-        LitePal.getDatabase();
 
 
-        //文件存储
+        //方式一：文件存储
         editText_local = (EditText) findViewById(R.id.editText1);
         String inputText1 = loadWithFile();
         if (!TextUtils.isEmpty(inputText1)) {
@@ -56,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 
 
-        //SharedPreferences存储
+        //方式二：SharedPreferences存储
         String inputText2 = loadWithSharedPreferences("key_1", "");
 
         editText_sharePreferences = (EditText) findViewById(R.id.editText2);
@@ -68,6 +65,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             editText_sharePreferences.setText("please enter somthing again");
         }
 
+        //方式三：LitePal 初始化和创建数据库
+        LitePal.initialize(this);
+        LitePal.getDatabase();
 
         findViewById(R.id.button1).setOnClickListener(this);
         findViewById(R.id.button2).setOnClickListener(this);
