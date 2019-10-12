@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<litepal>
+    <dbname value="my_weather_demo"/>
+    <version value="1"/>
+    <list>
+        <mapping class="com.msw.mydemo19.cityModel.City"/>
+        <mapping class="com.msw.mydemo19.cityModel.County"/>
+        <mapping class="com.msw.mydemo19.cityModel.Province"/>
+    </list>
+</litepal>

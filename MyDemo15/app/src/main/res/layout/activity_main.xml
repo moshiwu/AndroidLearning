@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.msw.mydemo15.MainActivity">
+
+
+    <Button
+        android:id="@+id/change_text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="change text 1"
+        android:textAllCaps="false"
+        />
+
+    <Button
+        android:id="@+id/change_text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="change text 2"
+        android:textAllCaps="false"
+        />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello I'm text"
+        />
+</LinearLayout>

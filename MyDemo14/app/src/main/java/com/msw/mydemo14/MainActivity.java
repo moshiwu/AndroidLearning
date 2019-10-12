@@ -1,10 +1,13 @@
 package com.msw.mydemo14;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,8 +19,16 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.Dictionary;
 import java.util.Map;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -28,7 +39,49 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    static {
+        // Init okhttp.
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+        TrustManager[] trustAllCerts = {new X509TrustManager() {
+            @Override
+            public X509Certificate[] getAcceptedIssuers() {
+                X509Certificate[] x509Certificates = new X509Certificate[0];
+                return x509Certificates;
+
+            }
+
+            @Override
+            public void checkClientTrusted(X509Certificate[] chain, String authType)
+                    throws CertificateException {
+                // Not implemented
+            }
+
+            @Override
+            public void checkServerTrusted(X509Certificate[] chain, String authType)
+                    throws CertificateException {
+                // Not implemented
+            }
+        }};
+
+        try {
+            SSLContext sc = SSLContext.getInstance("TLS");
+            sc.init(null, trustAllCerts, new java.security.SecureRandom());
+            builder.sslSocketFactory(sc.getSocketFactory());
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+
+        HTTP_CLIENT = builder.build();
+    }
+
+    public static final OkHttpClient HTTP_CLIENT;
+
     private static final String TAG = "MainActivity";
+
+    private ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +92,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.button1).setOnClickListener(this);
         findViewById(R.id.button2).setOnClickListener(this);
         findViewById(R.id.button3).setOnClickListener(this);
+        findViewById(R.id.button4).setOnClickListener(this);
+
+        imageView = (ImageView) findViewById(R.id.imageView);
     }
 
     @Override
@@ -118,6 +174,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     e.printStackTrace();
                 }
 
+                break;
+
+            case R.id.button4:
+
+                try {
+                    String path = "https://cdn.sc.ruishanio.net/avatar/0y4dgyzDtfVuiwai0BDzeQaE4fX.jpg";
+                    Request request = new Request.Builder()
+                            .url(path)
+                            .build();
+
+                    Call call = HTTP_CLIENT.newCall(request);
+
+                    call.enqueue(new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            Log.d(TAG, "request failure: " + e.toString());
+
+                        }
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            //得到从网上获取资源，转换成我们想要的类型
+
+                            final byte[] picture_bytes = response.body().bytes();
+
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Log.d(TAG, "onResponse: " + picture_bytes.length);
+
+                                    //使用BitmapFactory工厂，把字节数组转化为bitmap
+                                    Bitmap bitmap = BitmapFactory.decodeByteArray(picture_bytes, 0, picture_bytes.length);
+                                    //通过imageview，设置图片
+                                    imageView.setImageBitmap(bitmap);
+                                }
+                            });
+                        }
+                    });
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 break;
         }
     }
